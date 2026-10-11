@@ -20,8 +20,10 @@ const corsOption={
     origin:'https://talksbox.vercel.app',
     credentials:true
 };
-app.use(cors(corsOption)); 
-
+app.use(cors({
+    origin: "https://talksbox.vercel.app", 
+    credentials: true                   
+}));
 
 // routes
 app.use("/api/v1/user",userRoute); 
