@@ -15,11 +15,14 @@ const Sidebar = () => {
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
+    
+    // SAFE CHECK: Ensure otherUsers is strictly an array before filtering
     const filteredUsers = useMemo(() => {
+        const safeUsers = Array.isArray(otherUsers) ? otherUsers : [];
         const query = search.trim().toLowerCase();
-        if (!query) return otherUsers || [];
+        if (!query) return safeUsers;
 
-        return (otherUsers || []).filter((user) =>
+        return safeUsers.filter((user) =>
             user.fullName?.toLowerCase().includes(query)
         );
     }, [otherUsers, search]);
