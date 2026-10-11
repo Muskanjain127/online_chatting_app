@@ -11,7 +11,7 @@ const Messages = ({ onReply, onEdit }) => {
     return (
         <div className='px-4 flex-1 overflow-auto '>
             {
-               messages && messages?.map((message) => {
+              Array.isArray(messages) && messages?.map((message) => {
                     return (
                         <Message
                             key={message._id}
