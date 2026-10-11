@@ -13,13 +13,11 @@ import {
   } from 'redux-persist';
   import storage from 'redux-persist/lib/storage'
 
-  const persistConfig = {
-    key: 'root',
-    version: 1,
-    storage,
-  }
-
-  const rootReducer = combineReducers({
+const persistConfig = {
+  key: 'root',
+  storage,
+  blacklist: ['socket', 'user'] // Agar socket ya user mein non-serializable data hai toh blacklist karein
+};  const rootReducer = combineReducers({
     user:userReducer,
     message:messageReducer,
     socket:socketReducer
